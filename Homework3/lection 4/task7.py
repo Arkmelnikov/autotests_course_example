@@ -4,7 +4,9 @@
 
 def move_zeros(lst):
     # Здесь нужно написать код
-    x = [i for i in lst ]
+    x = [i for i in lst if i > 0 ]
+    y = [i for i in lst if i == 0]
+    lst = x + y
     return lst
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
