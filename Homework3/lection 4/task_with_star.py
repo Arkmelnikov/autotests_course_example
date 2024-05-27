@@ -12,7 +12,6 @@
 # 4974 --> 7974
 
 def max_division_by_3(num):
-    #     решил чатджпт (разобраться)
     num_str = str(num)
     for i in range(len(num_str)):
         for j in range(9, int(num_str[i]), -1):
