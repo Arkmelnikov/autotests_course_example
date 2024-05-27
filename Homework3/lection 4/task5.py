@@ -16,9 +16,12 @@
 def josephus_task(num_people, kill_num):
     # Здесь нужно написать код
     x = [1,2,3,4,5,6,7]
-    while len(num_people) >1:
-        survivor = x.pop(kill_num)
-    return survivor
+    soldiers = list(range(1, num_people + 1))
+    index = 0
+    while len(soldiers) > 1:
+        index = (index + kill_num - 1) % len(soldiers)
+        soldiers.pop(index)
+    return soldiers[0]
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
