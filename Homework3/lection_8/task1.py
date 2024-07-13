@@ -19,6 +19,10 @@ import unittest  # Не удалять
 
 # Здесь пишем код
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2c1f68da05e915c546c811d1cea8452d8aa8757d
 def treatment_sum(our_tuple):
     """
     Функция treatment_sum принимает кортеж our_tuple и возвращает сумму его элементов, если в кортеже ровно 2 элемента и их можно сложить.
@@ -75,4 +79,8 @@ class MyTestCase(unittest.TestCase):
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     unittest.main()
+=======
+    unittest.main()
+>>>>>>> 2c1f68da05e915c546c811d1cea8452d8aa8757d
