@@ -56,13 +56,13 @@ def func_log(file_log='log.txt'):
     return decorator
 
 # Пример использования декоратора
-# @func_log()
+@func_log()
 def func1():
     """Функция func1, которая делает паузу на 3 секунды."""
     import time
     time.sleep(3)
 
-# @func_log(file_log='func2.txt')
+@func_log(file_log='func2.txt')
 def func2():
     """Функция func2, которая делает паузу на 5 секунд."""
     import time
