@@ -10,11 +10,8 @@ def find_three_most_expensive_purchases(file_path):
     Читает файл с ценами товаров, разделяет покупки по пустым строкам,
     подсчитывает сумму каждой покупки и находит сумму трех самых дорогих покупок.
 
-    Args:
-        file_path (str): Путь к файлу с ценами товаров.
-
-    Returns:
-        int: Сумма трех самых дорогих покупок.
+    :param : file_path (str): Путь к файлу с ценами товаров.
+    :return: int: Сумма трех самых дорогих покупок.
     """
     # Чтение файла и разделение на покупки
     with open(file_path, 'r') as file:
@@ -35,11 +32,10 @@ def find_three_most_expensive_purchases(file_path):
 
     return three_most_expensive_purchases
 
+
 # Пример использования функции
 file_path = 'test_file/task_3.txt'
 three_most_expensive_purchases = find_three_most_expensive_purchases(file_path)
 print(three_most_expensive_purchases)
-
-
 
 assert three_most_expensive_purchases == 202346

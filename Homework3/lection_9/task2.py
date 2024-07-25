@@ -1,4 +1,4 @@
-# Напишите декоратор func_log, который может принимать аргумент file_log (Путь до файла), по умолчнию равен 'log.txt'
+# Напишите декоратор func_log, который может принимать аргумент file_log (Путь до файла), по умолчанию равен 'log.txt'
 # Декоратор должен дозаписывать в файл имя вызываемой функции (можно получить по атрибуту __name__), дату и время вызова
 # по формату:
 # имя_функции вызвана %d.%m %H:%M:%S
@@ -33,30 +33,30 @@
 
 import datetime
 
+
 # Здесь пишем код
 
-def func_log(file_log='log.txt'):
+def func_log(file_log):
     """
     Декоратор, который записывает имя вызываемой функции, дату и время вызова в указанный файл.
 
-    Args:
-        file_log (str): Путь до файла для записи логов. По умолчанию 'log.txt'.
-
-    Returns:
-        function: Обернутая функция с логированием.
+    :param file_log (str): Путь до файла для записи логов.
+    :return: function: Обернутая функция с логированием.
     """
     def decorator(func):
         def wrapper(*args, **kwargs):
             with open(file_log, 'a', encoding='utf-8') as log_file:
                 log_file.write(f"{func.__name__} вызвана {datetime.datetime.now().strftime('%d.%m %H:%M:%S')}\n")
             return func(*args, **kwargs)
+
         wrapper.__name__ = func.__name__
         wrapper.__doc__ = func.__doc__
         return wrapper
+
     return decorator
 
 # Пример использования декоратора
-@func_log()
+@func_log(file_log='func1.txt')
 def func1():
     """Функция func1, которая делает паузу на 3 секунды."""
     import time
@@ -68,7 +68,10 @@ def func2():
     import time
     time.sleep(5)
 
+# Вызов функций для демонстрации логирования
 func1()
 func2()
 func1()
+
+# Проверка документации функции
 help(func1)
