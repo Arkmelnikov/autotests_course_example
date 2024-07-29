@@ -3,6 +3,7 @@
 # Необходимо удалить все цифры и записать получившийся текст в файл test_file/task1_answer.txt
 
 
+
 # Здесь пишем код
 
 def remove_digits_from_file(input_file, output_file):

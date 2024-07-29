@@ -5,6 +5,7 @@
 
 # Здесь пишем код
 
+
 def find_three_most_expensive_purchases(file_path):
     """
     Читает файл с ценами товаров, разделяет покупки по пустым строкам,
