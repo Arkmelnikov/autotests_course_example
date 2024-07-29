@@ -155,10 +155,8 @@ try:
 
     driver.get('https://fix-online.sbis.ru/page/contacts')
     wait_element(driver, By.CSS_SELECTOR, Selectors.INPUT_CONTACTS)
-    
     message = driver.find_element(By.CSS_SELECTOR, Selectors.INPUT_CONTACTS)
     wait_element(driver, By.CSS_SELECTOR, Selectors.INPUT_CONTACTS)
-    
     driver.find_element(By.CSS_SELECTOR, Selectors.INPUT_CONTACTS).send_keys(Texts.NAME_CONTACT)
     wait_element(driver, By.CSS_SELECTOR, Selectors.NEED_NAME_CONTACT)
 
