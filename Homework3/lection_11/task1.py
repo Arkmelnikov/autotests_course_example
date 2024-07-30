@@ -5,8 +5,7 @@
 # Проверить, что есть блок новости "Сила в людях"
 # Перейдите в этом блоке в "Подробнее" и убедитесь, что открывается https://tensor.ru/about
 # Для сдачи задания пришлите код и запись с экрана прохождения теста
-import datetime
-
+from datetime import datetime
 from selenium import webdriver
 from selenium.common import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.by import By
@@ -50,21 +49,6 @@ def switch_to_new_tab(tab_index):
     :param tab_index: Индекс вкладки, на которую нужно переключиться (по умолчанию 1)
     """
     driver.switch_to.window(driver.window_handles[tab_index])
-
-
-def finds_element(by, locator):
-    """
-    Универсальный метод для поиска элемента на странице.
-
-    :param by: Метод поиска (например, By.CSS_SELECTOR)
-    :param locator: Локатор элемента (например, "Selectors.ABOUT_LINK")
-    :return: Найденный элемент или None, если элемент не найден
-    """
-    try:
-        driver.find_element(by, locator)
-    except NoSuchElementException:
-        print(f"Элемент с локатором {locator} не найден")
-        return None
 
 
 def find_and_click_element(by, locator):

@@ -24,9 +24,7 @@ class Selectors:
     STAND_FIX = 'fix-'
     LOGIN = '[data-qa="auth-AdaptiveLoginForm__login"] .controls-Field'
     PASSWORD = '[data-qa="auth-AdaptiveLoginForm__password"] .controls-Field'
-    # ENTER = '[data-qa="auth-AdaptiveLoginForm__checkSignInTypeButton"] .controls-icon_style-contrast'
     BTN_CONT_IN_ACCORDEON = '[data-name="contacts"] [data-qa="NavigationPanels-Accordion__title"]'
-    # BUTTON_DIALOG = '[data-qa="TabsItemSelected"]'
     BTN_CONT_IN_REESTR = '[name="TabContent2"]'
     REESTR_CONTACTS = '[data-qa="tile-container"]'
     INPUT_CONTACTS = '[inputmode="text"]'
@@ -56,22 +54,21 @@ def maximize_and_navigate(full_url):
     """
     Универсальный метод для перехода на страницу и максимизации окна браузера.
 
-    Full_url: Путь до страницы
+    :param: Full_url: Путь до страницы
     """
     driver.maximize_window()
     driver.get(full_url)  # Переход на указанную страницу
 
 
-def switch_to_new_tab(tab_index):
-    """
-    Универсальный метод для переключения на новую вкладку браузера.
-
-    :param tab_index: Индекс вкладки, на которую нужно переключиться (по умолчанию 1)
-    """
-    driver.switch_to.window(driver.window_handles[tab_index])
-
-
 def auth(by_login, loc_login, by_pas, loc_pas):
+    """
+    Универсальный метод для авторизации на онлайне.
+
+    :param by_login: Стратегия поиска локатора логина (например, By.CSS_SELECTOR)
+    :param loc_login: Локатор логина (например, "Selectors.LOGIN")
+    :param by_pas: Стратегия поиска локатора логина (например, By.CSS_SELECTOR)
+    :param loc_pas: Локатор пароля (например, "Selectors.PASSWORD")
+    """
     wait_element(driver, By.CSS_SELECTOR, Selectors.LOGIN)
     driver.find_element(by_login, loc_login).send_keys(Texts.LOGIN_MEL, Keys.ENTER)
     wait_element(driver, By.CSS_SELECTOR, Selectors.PASSWORD)
@@ -101,18 +98,14 @@ def wait_element(driver, by, locator, timeout=10):
     :param by: Метод поиска (например, By.CSS_SELECTOR).
     :param locator: Локатор элемента (например, "Selectors.BUTTON_CONTACT").
     :param timeout: Время ожидания в секундах (по умолчанию 10 секунд).
-    :return: Найденный элемент или None, если элемент не найден.
     """
     try:
         WebDriverWait(driver, timeout).until(
             ec.presence_of_element_located((by, locator))
         )
         time.sleep(1)
-        # return element
     except TimeoutException:
         raise
-        # print(f"Element with locator ({by}, {locator}) not found within {timeout} seconds.")
-        # return None
 
 
 def perform_action(driver, css_selector, action_type):
@@ -120,14 +113,11 @@ def perform_action(driver, css_selector, action_type):
     Выполняет указанное действие с элементом, найденным по CSS-селектору.
 
     Параметры:
-    driver: Экземпляр веб-драйвера Selenium.
-    css_selector (str): CSS-селектор для поиска элемента.
-    action_type (str): Тип действия, которое нужно выполнить ('context_click' или 'click').
-
-    Возвращает:
-    bool: True, если действие выполнено успешно, иначе False.
+    :param: driver: Экземпляр веб-драйвера Selenium.
+    :param: css_selector (str): CSS-селектор для поиска элемента.
+    :param: action_type (str): Тип действия, которое нужно выполнить ('context_click' или 'click').
+    :return: bool: True, если действие выполнено успешно, иначе False.
     """
-
     try:
         element = driver.find_element(By.CSS_SELECTOR, css_selector)
         actions = ActionChains(driver)
@@ -138,7 +128,6 @@ def perform_action(driver, css_selector, action_type):
             actions.click(element).perform()
         else:
             raise ValueError("Unsupported action type: {}".format(action_type))
-
         return True
     except NoSuchElementException:
         print("Element not found: {}".format(css_selector))
