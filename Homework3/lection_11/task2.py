@@ -66,7 +66,7 @@ def auth(by_login, loc_login, by_pas, loc_pas):
 
     :param by_login: Стратегия поиска локатора логина (например, By.CSS_SELECTOR)
     :param loc_login: Локатор логина (например, "Selectors.LOGIN")
-    :param by_pas: Стратегия поиска локатора логина (например, By.CSS_SELECTOR)
+    :param by_pas: Стратегия поиска локатора пароля (например, By.CSS_SELECTOR)
     :param loc_pas: Локатор пароля (например, "Selectors.PASSWORD")
     """
     wait_element(driver, By.CSS_SELECTOR, Selectors.LOGIN)
